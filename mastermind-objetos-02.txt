@@ -1,0 +1,55 @@
+@startuml
+object ":MasterMind" as MasterMind
+object ":Board" as Board
+object ":SecretCode" as SecretCode
+
+object ":Position1" as Position1
+object ":Position2" as Position2
+object ":Position3" as Position3
+object ":Position4" as Position4
+
+object ":Yellow" as SecretYellow
+object ":Blue" as SecretBlue
+object ":Red" as SecretRed
+object ":Green" as SecretGreen
+
+object ":Player1" as Player1
+object ":Player2" as Player2
+
+object ":Score" as Score1 {
+  score = 0
+}
+object ":Score" as Score2 {
+  score = 0
+}
+
+object ":Round" as Round {
+  round = 1
+}
+object ":Turn" as Turn {
+  turn = 2
+}
+
+MasterMind *--> Player1
+MasterMind *--> Player2
+
+Player1 *--> Score1
+Player2 *--> Score2
+
+MasterMind *--> Round
+MasterMind *--> Board
+
+Round *--> Turn
+
+Board o--> SecretCode
+
+SecretCode *--> Position1
+SecretCode *--> Position2
+SecretCode *--> Position3
+SecretCode *--> Position4
+
+Position1 o--> SecretYellow
+Position2 o--> SecretBlue
+Position3 o--> SecretRed
+Position4 o--> SecretGreen
+@enduml

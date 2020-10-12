@@ -1,0 +1,38 @@
+@startuml
+MasterMind *--> "1" Board
+MasterMind *--> "2" Player
+MasterMind *--> Round
+
+Round *--> Turn
+Board *-- "1" SecretCode
+Board o-- "0..12" Row
+Player *--> "1" Score
+Score *--> "0..30" ScorePoint
+Player --> Goal
+Code *-- "4" Position
+Code <|-- SecretCode
+Code <|-- ProposedCode
+Row *-- "1" ProposedCode
+Row *-- "1" Feedback
+Feedback <|-- WinningFeedback
+Position o-- "1" Color
+Color <|-- Red
+Color <|-- Orange
+Color <|-- Yellow
+Color <|-- Green
+Color <|-- Blue
+Color <|-- Purple
+Feedback *-- "0..4" Match
+Match <|-- FullMatch
+Match <|-- ColorMatch
+Turn --> "2" Player
+Goal --> WinningFeedback
+WinningFeedback *-- "4" FullMatch
+Player ..> SetSecretCodeAction
+Player ..> ProposeCodeAction
+'Action --> Board
+SetSecretCodeAction --> SecretCode
+ProposeCodeAction --> Board
+Action <|-- ProposeCodeAction
+Action <|-- SetSecretCodeAction
+@enduml

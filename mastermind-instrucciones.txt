@@ -1,0 +1,21 @@
+@startuml
+state A as "A"
+state B as "B"
+state C as "C"
+state D as "D"
+state E as "E"
+state F as "F"
+state G as "G"
+
+[*] --> A: getNumberOfRounds
+A --> B : player 1 enter secret code
+B --> C : player 2 propose code
+C --> B : scorePlayer1++
+C --> D : [isFullMatch || 12 rows]
+D --> E : player 2 enter secret code
+E --> F : player 1 propose code
+F --> E : scorePlayer2++
+F --> G : [isFullMatch || 12 rows || scorePlayer2 = 30]
+G --> A : next round
+G --> [*] : [all rounds finished || scorePlayer1 = 30 || scorePlayer2 = 30]
+@enduml

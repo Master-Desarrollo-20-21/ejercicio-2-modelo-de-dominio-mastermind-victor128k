@@ -1,0 +1,83 @@
+@startuml
+object ":MasterMind" as MasterMind
+object ":Board" as Board
+object ":SecretCode" as SecretCode
+
+object ":Position1" as Position1
+object ":Position2" as Position2
+object ":Position3" as Position3
+object ":Position4" as Position4
+
+object ":Yellow" as SecretYellow
+object ":Blue" as SecretBlue
+object ":Red" as SecretRed
+object ":Green" as SecretGreen
+
+object ":Row1" as Row1
+object ":ProposedCode" as ProposedCode1
+object ":Position1" as ProposedCode1Position1
+object ":Position2" as ProposedCode1Position2
+object ":Position3" as ProposedCode1Position3
+object ":Position4" as ProposedCode1Position4
+object ":Yellow" as Position1_1
+object ":Yellow" as Position1_2
+object ":Red" as Position1_3
+object ":Blue" as Position1_4
+object ":Feedback" as Feedback1
+object ":FullMatch" as Match1_1
+object ":FullMatch" as Match1_2
+object ":ColorMatch" as Match1_3
+
+object ":Player1" as Player1
+object ":Player2" as Player2
+
+object ":Score" as Score1 {
+  score = 1
+}
+object ":Score" as Score2 {
+  score = 0
+}
+
+object ":Round" as Round {
+  round = 1
+}
+object ":Turn" as Turn {
+  turn = 3
+}
+
+MasterMind *--> Player1
+MasterMind *--> Player2
+
+Player1 *--> Score1
+Player2 *--> Score2
+
+MasterMind *--> Round
+MasterMind *--> Board
+
+Round *--> Turn
+
+Board o--> SecretCode
+SecretCode *--> Position1
+SecretCode *--> Position2
+SecretCode *--> Position3
+SecretCode *--> Position4
+Position1 o--> SecretYellow
+Position2 o--> SecretBlue
+Position3 o--> SecretRed
+Position4 o--> SecretGreen
+
+Board o--> Row1
+Row1 *--> ProposedCode1
+ProposedCode1 o--> ProposedCode1Position1
+ProposedCode1 o--> ProposedCode1Position2
+ProposedCode1 o--> ProposedCode1Position3
+ProposedCode1 o--> ProposedCode1Position4
+ProposedCode1Position1 o--> Position1_1
+ProposedCode1Position2 o--> Position1_2
+ProposedCode1Position3 o--> Position1_3
+ProposedCode1Position4 o--> Position1_4
+Row1 *--> Feedback1
+Feedback1 o--> Match1_1
+Feedback1 o--> Match1_2
+Feedback1 o--> Match1_3
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+:Code Maker: as CodeMaker
+CodeMaker -down-> (Set Secret Code)
+CodeMaker -down-> (Set Feedback)
+CodeMaker -down-> (Add Score Point)
+
+:Code Breaker: as CodeBreaker
+CodeBreaker -down-> (Propose code)
+@enduml
